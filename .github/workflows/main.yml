@@ -1,0 +1,17 @@
+name: Test SVGs
+
+# Triggers the workflow on push / pull request events, and on manual trigger
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  Test-SVGs:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Check SVG validity
+        run: |
+            set -e
+            bash ./checkEmojis.sh
